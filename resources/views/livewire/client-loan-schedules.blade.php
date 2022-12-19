@@ -1,0 +1,84 @@
+<nav id="navbar_top" class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="/ClientDashboard">@foreach ($companynames as $companynames )
+        {{$companynames->CompanyName}}
+    @endforeach</a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center align-items-center" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+            <li class="nav-item">
+                <a class="nav-link" href="/ClientDashboard"><i class="fas fa-tachometer-alt"></i>Savings</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/ClientLoanSchedules"><i class="far fa-address-book"></i>Loan Schedules</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ClientLoanRepayments"><i class="far fa-clone"></i>Loan Repayments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/clientlogout"><i class="far fa-chart-bar"></i>Logout</a>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">{{session()->get('finance_client_data.FullNames')}} Loan Schedules Records 
+                    <!--<a href="/InvestorSavings"><button class="btn btn-warning" style="float: right;">Assign Investor</button></a>--></h3></div>
+              </div>
+              <div class="card-body" style="overflow-x: scroll;">
+<table id="example" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Loan ID</th>
+            <th>Installment</th>
+            <th>Repayment Date</th>
+            <th>Account No.</th>
+            <th>Account Name</th>
+            <th>Principal</th>
+            <th>Interest </th>
+            <th>Amount Payable</th> 	
+            <th>Fines</th>
+            <th>Balance</th>
+            <th>Payment Status</th>
+            <th>Branch</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($repaymentschedule as $repaymentschedule)
+        <tr>
+            <td>{{$repaymentschedule->LoanID}}</td>
+            <td>{{$repaymentschedule->Months}}</td>
+            <td>{{$repaymentschedule->PaymentDate}}</td>
+            <td>{{$repaymentschedule->AccountNo}}</td>
+            <td>{{$repaymentschedule->AccountName}}</td>
+            <td>{{$repaymentschedule->AmmountPay}}</td>
+            <td>{{$repaymentschedule->Interest}}</td>
+            <td>{{$repaymentschedule->TotalAmmount}}</td>
+            <td>{{$repaymentschedule->Fines}}</td>
+            <td>{{$repaymentschedule->BalanceExist}}</td>
+            <td>{{$repaymentschedule->PaymentStatus}}</td>
+            <td>{{$repaymentschedule->InsBranch}}</td>
+        </tr>
+        @endforeach
+
+
+    </tbody>
+    
+</table>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
